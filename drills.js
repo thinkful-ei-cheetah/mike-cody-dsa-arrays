@@ -9,8 +9,8 @@ function urlify(url) {
 const oldArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 function filterArray(arr) {
   let newArray = [];
-  for(let i = 0; i < oldArray.length; i++) {
-    if(oldArray[i] >= 5) {
+  for (let i = 0; i < oldArray.length; i++) {
+    if (oldArray[i] >= 5) {
       newArray.push(arr[i]);
     }
   }
@@ -24,11 +24,11 @@ function maxSum(arr) {
   let num = 0;
   let nextNum = 0;
 
-  for(let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     nextNum = 0;
-    for(let j = 0; j < arr.length; j++) {
+    for (let j = 0; j < arr.length; j++) {
       nextNum += arr[j];
-      if(nextNum > num) {
+      if (nextNum > num) {
         num = nextNum;
       }
     }
@@ -41,7 +41,7 @@ function maxSum(arr) {
 function maxSum(arr) {
   let currentSum = 0;
   let maxSum = 0;
-  for(let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     let currentNumber = arr[i];
     currentSum = Math.max(currentSum + currentNumber, 0);
     maxSum = Math.max(currentSum, maxSum);
@@ -67,8 +67,8 @@ const sentence = 'Battle of the Vowels: Hawaii vs. Grozny';
 const vowels = ['a', 'e', 'i', 'o', 'u'];
 function removeChar(sentence, vowels) {
   let newString = '';
-  for(let i = 0; i < sentence.length; i++) {
-    if(!vowels.includes(sentence[i])) {
+  for (let i = 0; i < sentence.length; i++) {
+    if (!vowels.includes(sentence[i])) {
       newString += sentence[i];
     }
   }
@@ -79,9 +79,9 @@ function removeChar(sentence, vowels) {
 // 10. Products
 function products(arr) {
   const result = [];
-  for(let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     let num = 1;
-    for(let j = 0; j < arr.length; j++) {
+    for (let j = 0; j < arr.length; j++) {
       if (i !== j) {
         num *= arr[j];
       }
@@ -102,19 +102,23 @@ let twoD = [
 ];
 
 function twoDArray(arr) {
-  let oneArray = [];
-  for(let i = 0; i < arr.length; i++) {
-    for(let j = 0; j < arr.length; j++) {
-      if(arr[i][j] === 0) {
-        oneArray.push([i, j]);
+  const oneArray = [];
+  const twoArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    let row = arr[i];
+    for (let j = 0; j < row.length; j++) {
+      const item = row[j];
+      if (item === 0) {
+        oneArray[i] = true;
+        twoArray[j] = true;
       }
     }
   }
-  for(let i = 0; i < oneArray.length; i++) {
-    for(let j = 0; j < arr.length; j++) {
-      for(let k = 0; k < arr[j].length; k++) {
-        arr[oneArray[i][0]][k] = 0;
-        arr[j][oneArray[i][1]] = 0;
+  for (let i = 0; i < arr.length; i++) {
+    let row = arr[i];
+    for (let j = 0; j < row.length; j++) {
+      if (oneArray[i] || twoArray[j]) {
+        row[j] = 0;
       }
     }
   }
