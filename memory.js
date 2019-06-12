@@ -1,3 +1,4 @@
+'use strict';
 class Memory {
   constructor() {
     this.memory = new Float64Array(1024);
@@ -35,9 +36,15 @@ class Memory {
     }
   }
 
+  //get(ptr) - 
+  // returns the value stored at a certain memory address (ptr is shorthand for pointer:
+  //  variables containing memory addresses are known as pointers)
+  
   get(ptr) {
     return this.memory[ptr];
   }
+
+  // set(ptr, value) - sets the value stored at a certain memory address
 
   set(ptr, value) {
     this.memory[ptr] = value;
